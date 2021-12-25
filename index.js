@@ -13,6 +13,4 @@ const filterArray = function (arr, options = { value, condition: "greater" }) {
   return arr.filter((el) => filterFunc(options.condition, options.value, el));
 };
 
-console.log(filterArray([1, 2, 5, 7], { value: 4, condition: "greaterEqual" }));
-
 export { filterArray };
