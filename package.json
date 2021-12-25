@@ -1,0 +1,24 @@
+{
+  "name": "easy-array",
+  "version": "1.0.0",
+  "description": "use array methods simply",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ajiharan/array__manipulation.git"
+  },
+  "keywords": [
+    "array",
+    "methods"
+  ],
+  "author": "Ajiharan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ajiharan/array__manipulation/issues"
+  },
+  "homepage": "https://github.com/Ajiharan/array__manipulation#readme"
+}
