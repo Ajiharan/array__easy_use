@@ -9,8 +9,23 @@ const filterFunc = (type = "greater", value, el) => {
   if (type === "TrippleEqual") return el === value;
 };
 
-const filterArray = function (arr, options = { value, condition: "greater" }) {
-  return arr.filter((el) => filterFunc(options.condition, options.value, el));
+const filterArray = function (
+  arr,
+  options = { value, condition: "greater", flatNumber: 0 },
+  key = null
+) {
+  const { flatNumber, condition, value } = options;
+  if (arr?.length > 0 && typeof arr[0] === "object" && key) {
+    return arr.filter((el) => filterFunc(condition, value, el[key]));
+  }
+  if (
+    flatNumber &&
+    (typeof flatNumber === "number" || flatNumber === "Infinity")
+  )
+    return arr
+      .flat(typeof flatNumber === "number" ? Math.abs(flatNumber) : flatNumber)
+      .filter((el) => filterFunc(condition, value, el));
+  else return arr.filter((el) => filterFunc(condition, value, el));
 };
 
 export { filterArray };

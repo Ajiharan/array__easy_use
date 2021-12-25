@@ -1,6 +1,6 @@
 {
-  "name": "easy-array",
-  "version": "1.0.0",
+  "name": "easy-array-use",
+  "version": "1.0.1",
   "description": "use array methods simply",
   "main": "index.js",
   "type": "module",
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Ajiharan/array__manipulation/issues"
   },
-  "homepage": "https://github.com/Ajiharan/array__manipulation#readme"
+  "homepage": "https://github.com/Ajiharan/array__manipulation#readme",
+  "dependencies": {
+    "easy-array-use": "^1.0.0"
+  }
 }
