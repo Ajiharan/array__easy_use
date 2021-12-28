@@ -7,7 +7,7 @@ const filterSingleConArray = function (
   key = null
 ) {
   checkIsArray(array);
-  if (!checkArrayElemetsType())
+  if (!checkArrayElemetsType(array))
     return new Error("array elements cannot be in different types");
   const { flatNumber, condition, value } = options;
   if (array?.length > 0 && array.every((el) => typeof el === "object") && key) {
@@ -32,7 +32,7 @@ const filterMultipleConArray = function (
   arrayCondition = "AND"
 ) {
   checkIsArray(array);
-  if (!checkArrayElemetsType())
+  if (!checkArrayElemetsType(array))
     return new Error("array elements cannot be in different types");
   return array.filter((el) => filterMultiFunc(el, options, arrayCondition));
 };
