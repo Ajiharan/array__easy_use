@@ -18,4 +18,25 @@ const filterMultiFunc = function (el, options, arrayCondition = "AND") {
   );
 };
 
-export { filterFunc, filterMultiFunc };
+const addUniqueObj = function (filterArray) {
+  const newArray = [];
+  filterArray.forEach((r) => {
+    if (r !== null && typeof r === "object") {
+      let isExists = true;
+      const isFind = newArray.find((obj) => {
+        const keys = Object.keys(r);
+        if (keys.length === Object.keys(obj).length) {
+          for (let i = 0; i < keys.length; i++) {
+            const key = keys[i];
+            isExists = obj[key] === r[key] ? false : true;
+          }
+        }
+        return !isExists ? true : false;
+      });
+      !isFind && newArray.push(r);
+    }
+  });
+  return newArray;
+};
+
+export { filterFunc, filterMultiFunc, addUniqueObj };
