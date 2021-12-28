@@ -1,12 +1,12 @@
-import { filterFunc, filterMultiFunc } from "./filter/filter.js";
-import { checkArrayElemetsType, checkArrayIsEmpty } from "./extra/extra.js";
+import { filterFunc, filterMultiFunc, addUniqueObj } from "./filter/filter.js";
+import { checkArrayElemetsType, checkIsArray } from "./extra/extra.js";
 
 const filterSingleConArray = function (
   array,
   options = { value, condition: "greater", flatNumber: 0 },
   key = null
 ) {
-  checkArrayIsEmpty(array);
+  checkIsArray(array);
   if (!checkArrayElemetsType())
     return new Error("array elements cannot be in different types");
   const { flatNumber, condition, value } = options;
@@ -31,17 +31,19 @@ const filterMultipleConArray = function (
   options = [{ value, condition: "greater", key: null }],
   arrayCondition = "AND"
 ) {
-  checkArrayIsEmpty(array);
+  checkIsArray(array);
   if (!checkArrayElemetsType())
     return new Error("array elements cannot be in different types");
   return array.filter((el) => filterMultiFunc(el, options, arrayCondition));
 };
 
 const removeDuplicate = (array) => {
-  checkArrayIsEmpty(array);
-  if (array.every((el) => typeof el !== "object")) {
-    return [...new Set(array)];
-  }
+  checkIsArray(array);
+  const filterArray = [...new Set(array)];
+  if (array.every((el) => typeof el !== "object")) return filterArray;
+
+  const newArray = addUniqueObj(filterArray);
+  return [...newArray, ...filterArray.filter((r) => typeof r !== "object")];
 };
 
 export { filterSingleConArray, filterMultipleConArray, removeDuplicate };

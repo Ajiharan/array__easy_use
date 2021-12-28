@@ -6,10 +6,10 @@ const checkArrayElemetsType = (array) => {
   return isArrayObject || isArrayisNotObject;
 };
 
-const checkArrayIsEmpty = (array) => {
+const checkIsArray = (array) => {
   if (!Array.isArray(array)) {
     throw new NotArrayException("argument is not an array");
   }
 };
 
-export { checkArrayElemetsType, checkArrayIsEmpty };
+export { checkArrayElemetsType, checkIsArray };
