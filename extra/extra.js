@@ -1,8 +1,17 @@
 import { NotArrayException } from "../error/errors.js";
-const checkArrayElemetsType = (array) => {
-  const filterArr = array.filter((el) => Boolean(el) || el === 0);
+
+const filterArray = function (array) {
+  return array.filter((el) => Boolean(el) || el === 0);
+};
+const checkArrayElemetsType = (array, isFilterArray = true) => {
+  let filterArr = array.slice();
+  if (isFilterArray) {
+    filterArr = filterArray(array);
+  }
+
   const isArrayObject = filterArr.every((el) => typeof el === "object");
   const isArrayisNotObject = filterArr.every((el) => typeof el !== "object");
+
   return isArrayObject || isArrayisNotObject;
 };
 
@@ -12,4 +21,10 @@ const checkIsArray = (array) => {
   }
 };
 
-export { checkArrayElemetsType, checkIsArray };
+const spliceArray = function (duplicateArray, index) {
+  if (index === -1) return duplicateArray;
+  duplicateArray.splice(index, 1);
+  return duplicateArray;
+};
+
+export { checkArrayElemetsType, checkIsArray, filterArray, spliceArray };
