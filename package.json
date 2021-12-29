@@ -13,7 +13,10 @@
   },
   "keywords": [
     "array",
-    "methods"
+    "methods",
+    "filter",
+    "flat",
+    "remove"
   ],
   "author": "Ajiharan",
   "license": "ISC",
