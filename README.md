@@ -79,3 +79,25 @@ const newArray=removeDuplicate([
   ]
 
 ```
+
+Find and delete element from Array
+
+```
+//if the array has  duplicate values
+import { findAndRemove } from 'easy-array-use';
+
+const myArray = [1, 2, 3, 4, "john"];
+
+console.log(findAndRemove(myArray, 1));
+
+//output
+[2,3,4,"john"]
+
+```
+
+## options
+
+findAndRemove function supports 2 options parameters like delElement, isMutable
+
+- (typeof isMutable)=boolean, [default : true]
+- (typeof delElement)=any ,[not array]
