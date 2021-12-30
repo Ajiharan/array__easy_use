@@ -104,9 +104,25 @@ const findAndRemove = function (array, delElement, isMutable = true) {
   return spliceArray(duplicateArray, index);
 };
 
+/**
+ * remove matches elements from an array
+ * @param array
+ * @param delElement
+ * @returns {array}
+ */
+
+const findAndRemoveAll = function (array, delElement) {
+  const newArray = findAndRemove(array, delElement, false);
+  if (array.length === newArray.length) {
+    return newArray;
+  }
+  return findAndRemoveAll(newArray, delElement, false);
+};
+
 export {
   filterSingleConArray,
   filterMultipleConArray,
   removeDuplicate,
   findAndRemove,
+  findAndRemoveAll,
 };
