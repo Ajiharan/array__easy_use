@@ -26,7 +26,7 @@ filterArray supports 2 options like key, flatNumber
 
 - _condition_ - _greater | greaterEqual | smaller | smallerEqual | doubleEqual | TrippleEqual_ (default to greater)
 
-Multiple Condition Array
+**Multiple Condition Array**
 
 ```
 //if the array has duplicate value
@@ -36,7 +36,7 @@ const newArray=filterMultipleConArray([1,2,3,4,5,6,7],[{condition:'greater',valu
 
 ```
 
-Remove duplicate
+**Remove duplicate**
 
 ```
 //if the array has  duplicate values
@@ -80,10 +80,10 @@ const newArray=removeDuplicate([
 
 ```
 
-Find and delete element from Array
+**Find and delete element from Array**
 
 ```
-//if the array has  duplicate values
+
 import { findAndRemove } from 'easy-array-use';
 
 const myArray = [1, 2, 3, 4, "john"];
@@ -101,3 +101,17 @@ findAndRemove function supports 2 options parameters like delElement, isMutable
 
 - (typeof isMutable)=boolean, [default : true]
 - (typeof delElement)=any ,[not array]
+
+**Find and delete all element from Array**
+
+```
+import { findAndRemoveAll } from 'easy-array-use';
+
+const myArray = [1, 2, 3, 4, "john",1,4,1];
+
+console.log(findAndRemoveAll(myArray, 1));
+
+//output
+[2,3,4,"john"]
+
+```
