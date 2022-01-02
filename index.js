@@ -4,14 +4,15 @@ import {
   checkIsArray,
   filterArray,
   spliceArray,
+  generateObject,
 } from "./extra/extra.js";
 
 /**
  * filter array with one condition
  * @param value
- * @param condition default:greater
- * @param flatNumber flaten array default:false
- * @returns {array}
+ * @param {String} condition default:greater
+ * @param {Number} flatNumber flaten array default:false
+ * @returns {Array}
  */
 const filterSingleConArray = function (
   array,
@@ -40,10 +41,11 @@ const filterSingleConArray = function (
 
 /**
  * filter array with multiple condition
- * @param value
- * @param condition default:greater
- * @param arrayCondition  AND or OR condition default:AND
- * @returns {array}
+ * @param {any} value
+ * @param {Array} options
+ * @param {String} condition default:greater
+ * @param {String} arrayCondition  AND or OR condition default:AND
+ * @returns {Array}
  */
 
 const filterMultipleConArray = function (
@@ -59,8 +61,8 @@ const filterMultipleConArray = function (
 
 /**
  * remove duplicate data from an array
- * @param array
- * @returns {array}
+ * @param {Array} array
+ * @returns {Array}
  */
 
 const removeDuplicate = (array) => {
@@ -74,10 +76,10 @@ const removeDuplicate = (array) => {
 
 /**
  * remove first matches element from an array
- * @param array
- * @param delElement
- * @param isMutable
- * @returns {array}
+ * @param {Array} array
+ * @param {Object} delElement
+ * @param {Boolean} isMutable
+ * @returns {Array}
  */
 
 const findAndRemove = function (array, delElement, isMutable = true) {
@@ -106,9 +108,9 @@ const findAndRemove = function (array, delElement, isMutable = true) {
 
 /**
  * remove matches elements from an array
- * @param array
- * @param delElement
- * @returns {array}
+ * @param {Array} array
+ * @param {Object} delElement
+ * @returns {Array}
  */
 
 const findAndRemoveAll = function (array, delElement) {
@@ -119,10 +121,32 @@ const findAndRemoveAll = function (array, delElement) {
   return findAndRemoveAll(newArray, delElement, false);
 };
 
+/**
+ * push every values to the keys
+ * @param {Array} array
+ * @param {Object} filterObject
+ * @returns {Object}
+ */
+
+const reduceAndConcat = function (array, filterObject = null) {
+  checkIsArray(array);
+  if (array.length === 0) return null;
+  const obj = !filterObject
+    ? generateObject(array, filterObject)
+    : filterObject;
+  array.forEach((c) => {
+    Object.keys(c).forEach((key) => {
+      obj[key]?.push(c[key]);
+    });
+  });
+  return obj;
+};
+
 export {
   filterSingleConArray,
   filterMultipleConArray,
   removeDuplicate,
   findAndRemove,
   findAndRemoveAll,
+  reduceAndConcat,
 };

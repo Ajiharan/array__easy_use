@@ -115,3 +115,49 @@ console.log(findAndRemoveAll(myArray, 1));
 [2,3,4,"john"]
 
 ```
+
+**reduce and concat values from Array**
+
+```
+import { reduceAndConcat } from 'easy-array-use';
+
+const myArray = [
+  { name: "john", age: 12 },
+  { name: "harry", age: 25 },
+  { name: "jim", age: 26 },
+  { name: "rokith", age: 24 },
+];
+
+console.log(reduceAndConcat(myArray, { name: [], age: [] }));
+
+//output
+{ name: [ 'john', 'harry', 'jim', 'rokith' ], age: [ 12, 25, 26, 24 ] }
+
+const mynewArray = [
+  { name: "john", age: 12, year: 1996 },
+  { name: "harry", age: 25 },
+  { name: "jim", age: 26 },
+  { name: "rokith", age: 24 },
+];
+
+console.log(reduceAndConcat(mynewArray));
+
+
+//output
+{
+  name: [ 'john', 'harry', 'jim', 'rokith' ],
+  age: [ 12, 25, 26, 24 ],
+  year: [ 1996 ]
+}
+
+```
+
+## options
+
+- filterObject [type : object] default : null
+
+**Note**
+
+```diff
+- if filterObject is null then function reduce using first element of array
+```
