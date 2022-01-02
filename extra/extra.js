@@ -27,4 +27,19 @@ const spliceArray = function (duplicateArray, index) {
   return duplicateArray;
 };
 
-export { checkArrayElemetsType, checkIsArray, filterArray, spliceArray };
+const generateObject = function (array) {
+  const keys = Object.keys(array[0]);
+  const obj = {};
+  keys.forEach((key) => {
+    obj[key] = [];
+  });
+  return obj;
+};
+
+export {
+  checkArrayElemetsType,
+  checkIsArray,
+  filterArray,
+  spliceArray,
+  generateObject,
+};
