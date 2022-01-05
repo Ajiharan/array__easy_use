@@ -161,3 +161,93 @@ console.log(reduceAndConcat(mynewArray));
 ```diff
 - if filterObject is null then function reduce using first element of array
 ```
+
+**Count array items**
+
+```
+import { countArrayValue } from 'easy-array-use';
+
+const myArray =  [
+      1,
+      2,
+      3,
+      1,
+      5,
+      null,
+      {},
+      {},
+      { name: "harry" },
+      { name: "harry" },
+      { name: "harry", age: 25 },
+      "jim",
+      "jim",
+      null,
+    ];
+
+console.log(countArrayValue(myArray,true));
+
+//output
+{
+  '1': 2,
+  '2': 1,
+  '3': 1,
+  '5': 1,
+  null: 2,
+  '{}': 2,
+  '{"name":"harry"}': 2,
+  '{"name":"harry","age":25}': 1,
+  jim: 2
+}
+
+console.log(countArrayValue(myArray,false));
+
+//output
+{
+  '1': 2,
+  '2': 1,
+  '3': 1,
+  '5': 1,
+  null: 2,
+  '[object Object]': 5,
+  jim: 2
+}
+```
+
+## options
+
+- objectCount [type : boolean] default : false
+
+**Count and reduce array items**
+
+```
+import { reduceCountArrayValue } from 'easy-array-use';
+
+const myArray =  [
+      1,
+      2,
+      3,
+      1,
+      5,
+      null,
+      {},
+      {},
+      { name: "harry" },
+      { name: "harry" },
+      { name: "harry", age: 25 },
+      "jim",
+      "jim",
+      null,
+    ];
+
+console.log(reduceCountArrayValue(myArray,true, { condition: "TrippleEqual", value: 2, flatNumber: 0 }));
+
+//output
+[ 1, null, {}, { name: 'harry' }, 'jim' ]
+
+
+```
+
+## options
+
+- objectCount [type : boolean] default : false
+- options [type : object] =(condition: "TrippleEqual", value: 2, flatNumber: 0)

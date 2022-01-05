@@ -5,6 +5,7 @@ import {
   filterArray,
   spliceArray,
   generateObject,
+  checkObjectWithoutNullOrArray,
 } from "./extra/extra.js";
 
 /**
@@ -142,6 +143,55 @@ const reduceAndConcat = function (array, filterObject = null) {
   return obj;
 };
 
+/**
+ * count values count
+ * @param {Array} array
+ * @param {boolean} objectCount
+ * @returns {Object}
+ */
+
+const countArrayValue = function (array, objectCount = false) {
+  return array.reduce((acc, c) => {
+    if (objectCount && checkObjectWithoutNullOrArray(c)) {
+      c = JSON.stringify(c);
+    }
+    acc[c] ? ++acc[c] : (acc[c] = 1);
+
+    return acc;
+  }, {});
+};
+
+/**
+ * count and reduce values count
+ * @param {Array} array
+ * @param {boolean} objectCount
+ * @param {object} options
+ * @returns {Array}
+ */
+
+const reduceCountArrayValue = function (
+  array,
+  objectCount = false,
+  options = { condition: "TrippleEqual", value: 2, flatNumber: 0 }
+) {
+  checkIsArray(array);
+  return filterSingleConArray(
+    Object.entries(countArrayValue(array, objectCount)).map((entry) => ({
+      key: entry[1],
+      value: entry[0],
+    })),
+    options,
+    "key"
+  ).map((r) => {
+    if (r.value === null) return r.value;
+    try {
+      return JSON.parse(r.value);
+    } catch {
+      return r.value;
+    }
+  });
+};
+
 export {
   filterSingleConArray,
   filterMultipleConArray,
@@ -149,4 +199,6 @@ export {
   findAndRemove,
   findAndRemoveAll,
   reduceAndConcat,
+  countArrayValue,
+  reduceCountArrayValue,
 };
