@@ -27,6 +27,9 @@ const spliceArray = function (duplicateArray, index) {
   return duplicateArray;
 };
 
+const checkObjectWithoutNullOrArray = (obj) =>
+  typeof obj === "object" && obj !== null && !Array.isArray(obj);
+
 const generateObject = function (array) {
   const keys = Object.keys(array[0]);
   const obj = {};
@@ -42,4 +45,5 @@ export {
   filterArray,
   spliceArray,
   generateObject,
+  checkObjectWithoutNullOrArray,
 };
