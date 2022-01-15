@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ajiharan/array__manipulation.git"
+    "url": "git+https://github.com/Ajiharan/array__easy_use.git"
   },
   "keywords": [
     "array",
@@ -21,7 +21,7 @@
   "author": "Ajiharan",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Ajiharan/array__manipulation/issues"
+    "url": "https://github.com/Ajiharan/array__easy_use/issues"
   },
-  "homepage": "https://github.com/Ajiharan/array__manipulation#readme"
+  "homepage": "https://github.com/Ajiharan/array__easy_use#readme"
 }
