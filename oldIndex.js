@@ -1,12 +1,12 @@
-import { filterFunc, filterMultiFunc, addUniqueObj } from "./filter/filter.js";
 import {
   checkArrayElemetsType,
   checkIsArray,
-  filterArray,
-  spliceArray,
-  generateObject,
   checkObjectWithoutNullOrArray,
+  filterArray,
+  generateObject,
+  spliceArray,
 } from "./extra/extra.js";
+import { addUniqueObj, filterFunc, filterMultiFunc } from "./filter/filter.js";
 
 const filterSingleConArray = function (
   array,
@@ -185,6 +185,41 @@ const reduceCountArrayValue = function (
   });
 };
 
+/**
+ * count and reduce values count
+ * @param {Array} iterator
+ * @param {string} key
+ * @param {object} obj
+ * @returns {Array}
+ */
+const reorderArray = function (iterator, key, obj) {
+  let found = false;
+  let isBreak = false;
+  let temp = null;
+  const newArray = [];
+  for (let i = 0; i < iterator.length; i++) {
+    if (iterator[i].position === obj[key]) {
+      found = true;
+    }
+    if (found) {
+      temp = { ...iterator[i] };
+
+      if (!isBreak) {
+        temp[key] += 1;
+      }
+
+      if (!isBreak && !iterator.slice(i).find((r) => r[key] === temp[key])) {
+        isBreak = true;
+      }
+    }
+    newArray.push(temp || iterator[i]);
+    temp = null;
+  }
+  newArray.push(obj);
+  newArray.sort((a, b) => a[key] - b[key]);
+  return newArray;
+};
+
 export {
   filterSingleConArray,
   filterMultipleConArray,
@@ -194,4 +229,5 @@ export {
   reduceAndConcat,
   countArrayValue,
   reduceCountArrayValue,
+  reorderArray,
 };

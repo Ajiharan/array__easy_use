@@ -1,22 +1,13 @@
-import { filterFunc, filterMultiFunc, addUniqueObj } from "./filter/filter.js";
 import {
   checkArrayElemetsType,
   checkIsArray,
-  filterArray,
-  spliceArray,
-  generateObject,
   checkObjectWithoutNullOrArray,
+  filterArray,
+  generateObject,
+  spliceArray,
 } from "./extra/extra.js";
-import {
-  countArrayValue,
-  filterMultipleConArray,
-  filterSingleConArray,
-  findAndRemove,
-  findAndRemoveAll,
-  reduceAndConcat,
-  reduceCountArrayValue,
-  removeDuplicate,
-} from "./oldIndex.js";
+import { addUniqueObj, filterFunc, filterMultiFunc } from "./filter/filter.js";
+
 class EasyArrayUse {
   /**
    * @param  {} array
@@ -171,14 +162,6 @@ class EasyArrayUse {
     });
   }
 }
+
 export default EasyArrayUse;
-export {
-  countArrayValue,
-  filterMultipleConArray,
-  filterSingleConArray,
-  findAndRemove,
-  findAndRemoveAll,
-  reduceAndConcat,
-  reduceCountArrayValue,
-  removeDuplicate,
-};
+export * from "./oldIndex.js";
