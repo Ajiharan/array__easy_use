@@ -251,3 +251,60 @@ console.log(reduceCountArrayValue(myArray,true, { condition: "TrippleEqual", val
 
 - objectCount [type : boolean] default : false
 - options [type : object] =(condition: "TrippleEqual", value: 2, flatNumber: 0)
+
+**Reorder Array**
+
+```
+
+const order = [
+  {
+    id: "79832732",
+    position: 1,
+  },
+  {
+    id: "79832723",
+    position: 2,
+  },
+
+  {
+    id: "79832778",
+    position: 3,
+  },
+  {
+    id: "79832797",
+    position: 4,
+  },
+  {
+    id: "79832798",
+    position: 6,
+  },
+  {
+    id: "79832799",
+    position: 7,
+  },
+  {
+    id: "798327101",
+    position: 9,
+  },
+];
+
+const newOrder = {
+  id: "79832766",
+  position: 3,
+};
+
+console.log(reorderArray(order, "position", newOrder));
+
+//output
+[
+  { id: '79832732', position: 1 },
+  { id: '79832723', position: 2 },
+  { id: '79832766', position: 3 },
+  { id: '79832778', position: 4 },
+  { id: '79832797', position: 5 },
+  { id: '79832798', position: 6 },
+  { id: '79832799', position: 7 },
+  { id: '798327101', position: 9 }
+]
+
+```
